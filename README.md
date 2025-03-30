@@ -21,7 +21,7 @@
 
 ### 🌐 `Deploy`
 
-
+https://note-map-js-moving.netlify.app/
 
 ### `Screen`
 
