@@ -35,7 +35,7 @@ var layerGroup = [];
 //! kullanıcının konumunu öğrenme
 navigator.geolocation.getCurrentPosition(
     loadMap,
-    console.log('Kullanıcı kabul etmedi')
+    (error) => console.log('Konum alınamadı:', error)
 );
 
 // haritaya tıklanınca çalışan fonk.
@@ -53,10 +53,11 @@ function onMapClick(e) {
 
 //! kullanıcının konumuna göre ekrana haritayı basma
 function loadMap(e) {
+    let lat = e?.coords?.latitude || 40.7128;
+    let lng = e?.coords?.longitude || -74.0060;
+
     // haritanın kurulumunu yapar
-    map = L.map('map').setView(
-        [e.coords.latitude, e.coords.longitude], 
-        14);
+    map = L.map('map').setView([lat, lng], 14);
 
     // haritanın nasıl görüneceğini belirler
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
